@@ -1,0 +1,9 @@
+.navbar{
+    height: 60;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+    position: sticky;   /* sticks to top */
+    top: 0;
+    z-index: 100;
+}
