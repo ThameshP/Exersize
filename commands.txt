@@ -1,0 +1,6 @@
+
+
+
+git add --all
+git commit -m "message"  -> to add, commit, and push to repository
+git push origin main
