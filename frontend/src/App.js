@@ -1,13 +1,28 @@
-import './App.css';
-import Navbar from './Navbar';
-import Home from './Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     //BEM NAMING CONVENTION (names of components are lowercase)
     <div className="app">
-      <Navbar />
-      <Home />
+
+      <BrowserRouter>
+
+        <Navbar />
+        <div className="pages">
+          <Routes>
+
+            <Route path='/' element={
+              <Home />
+            }
+            />
+
+          </Routes>
+        </div>
+
+      </BrowserRouter>
+      
     </div>
   );
 }
