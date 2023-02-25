@@ -1,7 +1,30 @@
+import { useEffect, useState } from 'react'
+import WorkoutDetails from '../components/WorkoutDetails'
 const Home = () =>{
+    const [workouts, setWorkouts] = useState(null)
+    //Needs to be fired once when rendered
+    //Having on empty array dependency tells us that it will only be fired once.
+    useEffect(() => {
+        const fetchWorkouts = async () => {
+            const response = await fetch('http://localhost:4000/api/workouts')
+            const json = await response.json()
+
+            if(response.ok) {
+                setWorkouts(json)
+            }
+        }
+        
+        fetchWorkouts()
+    }, [])
+
     return (
         <div className="home">
-            <h2>Home Test</h2>
+            
+            <div className= "workouts">
+                {workouts && workouts.map((workout) => (
+                    <WorkoutDetails key={workout._id} workout= {workout} />
+                ))}
+            </div>
         </div>
     )
 

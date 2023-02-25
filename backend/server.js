@@ -13,6 +13,15 @@ const app = express()
 //Looks to see if their body in the json req
 app.use(express.json())
 
+//Fixing CORS
+app.use('/api/workouts', (req, res, next)=>{
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  next();
+})
+
+const cors = require("cors");
+app.use(cors());
+
 //Gives us the ability to console log the request path and method
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -25,7 +34,7 @@ app.use('/api/workouts/', workoutRoutes)
 //Database connection using Mongoose
 mongoose.connect(process.env.MONG_URI)
     .then(() => {
-        app.listen(process.env.PORT, () => {
+        app.listen(4000, () => {
         console.log('listening on port 4000 and database connected')
         })
     })
