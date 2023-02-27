@@ -78,9 +78,9 @@ const Navbar1 = () => {
                          <Input underlined  type= "Number" onChange={(e) => setWeight(e.target.value)} value={weight}  label="Add Weight" placeholder="Weight"css={{display: "flex", padding: "5px"}}/>
                          <Input underlined type= "Number" onChange={(e) => setSet(e.target.value)} value={set}  label="Add Set" placeholder="Sets"css={{display: "flex", padding: "5px"}}/>
                          <Input underlined  type= "Number" onChange={(e) => setRep(e.target.value)} value={rep}  label="Add Rep" placeholder="Reps"css={{display: "flex", padding: "5px"}}/>
-                         <Button flat color="primary" auto css={{ margin: "auto", background: "LightCyan"}}> <Text size="$2xl">+</Text> </Button>
-                         <button> Add</button>
-                         {error && <div className="error">{error}</div> }
+                         
+                         <button><Button flat color="primary" auto css={{ margin: "auto", background: "LightCyan"}}> <Text size="$2xl">+</Text> </Button> </button>
+                         
                         </form>
                     </Popover.Content>
                 </Popover> 

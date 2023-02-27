@@ -16,7 +16,15 @@ header a {
 }
 
 
+button {
 
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  margin: auto;
+  display: flex;
+  padding-top: 10px;
+}
 
 .pages{
   padding: 20px;
