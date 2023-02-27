@@ -1,10 +1,15 @@
 import {Link} from 'react-router-dom'
 import { Card, Grid, Text, Button, Row, Popover, Input, Navbar} from "@nextui-org/react";
 import { useState } from "react"
+import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
+import { useRefresh } from 'react-admin';
+
+
+
 
 
 const Navbar1 = () => {
-
+    const {dispatch} = useWorkoutsContext 
     const [title, setTitle] = useState('')
     const [weight, setWeight] = useState('')
     const [set, setSet] = useState('')
@@ -12,9 +17,10 @@ const Navbar1 = () => {
     const [error, setError] = useState('null')
 
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-    
+        
 
     const workout = {title, weight, set, rep}
     const response = await fetch('http://localhost:4000/api/workouts', {
@@ -32,13 +38,18 @@ const Navbar1 = () => {
     }
 
     if(response.ok){
+        window.location.reload()
         setError(null)
         setTitle('')
         setWeight('')
         setSet('')
         setRep('')
         console.log('New workout added', json)
+        dispatch({type: 'CREATE_WORKOUT', payload: json})
+       
     }
+
+    
 
 
     }
@@ -53,7 +64,7 @@ const Navbar1 = () => {
                         </Text>
                     </Navbar.Brand>
                  <Navbar.Content hideIn="xs" variant="highlight-rounded">
-                <Popover>
+                <Popover >
                     <Popover.Trigger>
                         <Button flat color="primary" auto css={{ background: "LightCyan"}}>
                             <Link>
@@ -68,11 +79,11 @@ const Navbar1 = () => {
                          <Input underlined type= "Number" onChange={(e) => setSet(e.target.value)} value={set}  label="Add Set" placeholder="Sets"css={{display: "flex", padding: "5px"}}/>
                          <Input underlined  type= "Number" onChange={(e) => setRep(e.target.value)} value={rep}  label="Add Rep" placeholder="Reps"css={{display: "flex", padding: "5px"}}/>
                          <Button flat color="primary" auto css={{ margin: "auto", background: "LightCyan"}}> <Text size="$2xl">+</Text> </Button>
-                         <button>Add</button>
+                         <button> Add</button>
                          {error && <div className="error">{error}</div> }
                         </form>
                     </Popover.Content>
-                </Popover>
+                </Popover> 
                 </Navbar.Content>
                 </Navbar>
             </div>
