@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import WorkoutDetails from '../components/WorkoutDetails'
+import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
+
 const Home = () =>{
-    const [workouts, setWorkouts] = useState(null)
+
+    const {workouts, dispatch} = useWorkoutsContext()
+ 
     //Needs to be fired once when rendered
     //Having on empty array dependency tells us that it will only be fired once.
     useEffect(() => {
         const fetchWorkouts = async () => {
             const response = await fetch('http://localhost:4000/api/workouts')
-            const json = await response.json()
+        const json = await response.json()
 
             if(response.ok) {
-                setWorkouts(json)
+                dispatch({type: 'SET_WORKOUTS', payload: json})
             }
         }
         

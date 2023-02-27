@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom'
-import { Card, Grid, Text, Button, Row, Popover, Input} from "@nextui-org/react";
+import { Card, Grid, Text, Button, Row, Popover, Input, Navbar} from "@nextui-org/react";
 import { useState } from "react"
 
 
-const Navbar = () => {
+const Navbar1 = () => {
 
     const [title, setTitle] = useState('')
     const [weight, setWeight] = useState('')
@@ -46,35 +46,38 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <Button flat color="primary" auto css={{ background: "LightCyan"}}>
-                <Link to= "/">
-                    <Text size="$2xl"> Exersize </Text>
-                </Link>
-                 </Button>
+                <Navbar isHoverable variant="floating">
+                    <Navbar.Brand> 
+                        <Text b color="inherit" hideIn="xs">
+                            Exersize
+                        </Text>
+                    </Navbar.Brand>
+                 <Navbar.Content hideIn="xs" variant="highlight-rounded">
                 <Popover>
-                <Popover.Trigger>
-                    <Button flat color="primary" auto css={{ background: "LightCyan"}}>
-                        <Link>
-                        <Text size="$2xl"> + </Text>
-                     </Link>
-                    </Button>
+                    <Popover.Trigger>
+                        <Button flat color="primary" auto css={{ background: "LightCyan"}}>
+                            <Link>
+                                <Text size="$2xl"> + </Text>
+                            </Link>
+                        </Button>
                     </Popover.Trigger>
                     <Popover.Content css={{ background: "LightCyan", padding: "20px"}}>
                         <form className= "create" onSubmit={handleSubmit}>
-                         <Input type= "String" onChange={(e) => setTitle(e.target.value)} value={title} required={true} clearable label="Add Exersize" placeholder="Name" css={{display: "flex", padding: "5px"}}/>
-                         <Input type= "Number" onChange={(e) => setWeight(e.target.value)} value={weight}  label="Add Weight" placeholder="Weight"css={{display: "flex", padding: "5px"}}/>
-                         <Input type= "Number" onChange={(e) => setSet(e.target.value)} value={set}  label="Add Set" placeholder="Sets"css={{display: "flex", padding: "5px"}}/>
-                         <Input type= "Number" onChange={(e) => setRep(e.target.value)} value={rep}  label="Add Rep" placeholder="Reps"css={{display: "flex", padding: "5px"}}/>
+                         <Input underlined  type= "String" onChange={(e) => setTitle(e.target.value)} value={title} required={true} clearable label="Add Exersize" placeholder="Name" css={{display: "flex", padding: "5px"}}/>
+                         <Input underlined  type= "Number" onChange={(e) => setWeight(e.target.value)} value={weight}  label="Add Weight" placeholder="Weight"css={{display: "flex", padding: "5px"}}/>
+                         <Input underlined type= "Number" onChange={(e) => setSet(e.target.value)} value={set}  label="Add Set" placeholder="Sets"css={{display: "flex", padding: "5px"}}/>
+                         <Input underlined  type= "Number" onChange={(e) => setRep(e.target.value)} value={rep}  label="Add Rep" placeholder="Reps"css={{display: "flex", padding: "5px"}}/>
                          <Button flat color="primary" auto css={{ margin: "auto", background: "LightCyan"}}> <Text size="$2xl">+</Text> </Button>
                          <button>Add</button>
                          {error && <div className="error">{error}</div> }
                         </form>
-                        </Popover.Content>
-                    </Popover>
+                    </Popover.Content>
+                </Popover>
+                </Navbar.Content>
+                </Navbar>
             </div>
         </header>
     )
-
 }
 
-export default Navbar 
+export default Navbar1
