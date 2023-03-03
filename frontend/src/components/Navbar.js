@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import { Card, Grid, Text, Button, Row, Popover, Input, Navbar} from "@nextui-org/react";
+import { Card, Grid, Text, Button, Row, Popover, Input, Navbar, Image} from "@nextui-org/react";
 import { useState } from "react"
 import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
 import { useRefresh } from 'react-admin';
@@ -59,17 +59,30 @@ const Navbar1 = () => {
             <div className="container">
                 <Navbar isHoverable variant="floating">
                     <Navbar.Brand> 
-                        <Text b color="inherit" hideIn="xs">
+                        <Image
+                        css={{ marginTop: "2px"}}
+                        width={40}
+                        height={40}
+                        src="https://cdn-icons-png.flaticon.com/512/1401/1401482.png"
+
+                        />
+                        <Text css={{ marginLeft: "35px"}}
+                         color="inherit" hideIn="xs">
                             Exersize
                         </Text>
                     </Navbar.Brand>
                  <Navbar.Content hideIn="xs" variant="highlight-rounded">
                 <Popover >
                     <Popover.Trigger>
-                        <Button flat color="primary" auto css={{ background: "LightCyan"}}>
-                            <Link>
-                                <Text size="$2xl"> + </Text>
-                            </Link>
+                        <Button flat color="primary" auto css={{ background: "White"}}>
+                            
+                            <Image
+                                css={{ marginTop: "0px"}}
+                                width={25}
+                                height={25}
+                                src="https://www.flaticon.com/svg/vstatic/svg/3914/3914248.svg?token=exp=1677633921~hmac=e0b1c4e7424784ba6aa5bb81322fd1b8"
+                            />
+                            
                         </Button>
                     </Popover.Trigger>
                     <Popover.Content css={{ background: "LightCyan", padding: "20px"}}>
@@ -79,7 +92,14 @@ const Navbar1 = () => {
                          <Input underlined type= "Number" onChange={(e) => setSet(e.target.value)} value={set}  label="Add Set" placeholder="Sets"css={{display: "flex", padding: "5px"}}/>
                          <Input underlined  type= "Number" onChange={(e) => setRep(e.target.value)} value={rep}  label="Add Rep" placeholder="Reps"css={{display: "flex", padding: "5px"}}/>
                          
-                         <button><Button flat color="primary" auto css={{ margin: "auto", background: "LightCyan"}}> <Text size="$2xl">+</Text> </Button> </button>
+                         <button><Image
+                        css={{ marginTop: "2px"}}
+                        width={19}
+                        height={19}
+                        src="https://www.flaticon.com/svg/vstatic/svg/3917/3917749.svg?token=exp=1677633710~hmac=fdc57ed01f8029c3ad9355303904b192"
+
+                        /> 
+                        </button>
                          
                         </form>
                     </Popover.Content>
